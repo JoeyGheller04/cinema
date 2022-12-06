@@ -5,7 +5,7 @@ if($_POST){
 
     switch($_POST["btn"]){
         case "login":
-            header("location: login_handler.php");
+            header("location: ../backend/handler/login_handler.php");
             break;
         
         case "register":

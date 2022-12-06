@@ -1,4 +1,6 @@
-<?php ?>
+<?php 
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +11,7 @@
     <title>Cinema</title>
 </head>
 <body>
-    <form action="../backend/router.php" method="post">
+    <form action="router.php" method="post">
 
         <input type="text" id="email"  name="email">
         <input type="text" id="password"  name="password">
@@ -17,7 +19,7 @@
         <button type="submit" value="login" name="btn">Accedi</button>
     </form>
 
-    <form action="../backend/router.php" method="post">
+    <form action="router.php" method="post">
 
         <input type="text" id="nome"  name="nome">
         <input type="text" id="cognome"  name="cognome">

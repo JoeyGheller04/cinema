@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+require("../backend/login/Utente.php");
+
 $data = array(
     "nome" =>  $_POST["nome"],
     "cognome" =>  $_POST["cognome"],
@@ -15,7 +17,7 @@ if($res == true){
 
     $_SESSION["email"] = $_POST["email"];
     $_SESSION["password"] = $_POST["password"];
-    header('location: ../frontend/second.php');
+    header('location: ../backend/second.php');
 }
 
-header('location: ../frontend/index.php');
+header('location: ../backend/index.php');
