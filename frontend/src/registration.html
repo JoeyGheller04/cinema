@@ -1,16 +1,28 @@
 <!doctype html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link href="../dist/output.css" rel="stylesheet">
+  <!-- <link href="../dist/output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script> -->
+  <script src="../js/script.js"></script>
 
   <title>Cinema</title>
 </head>
+
 <body>
-  <h1 class="text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <form action="" method="post" id="form_registration">
+
+    <input type="text" id="nome" name="nome">
+    <input type="text" id="cognome" name="cognome">
+    <input type="text" id="email" name="email">
+    <input type="text" id="password" name="password">
+
+    <button type="submit" id="registration-btn" value="registration" name="btn" onclick="registration()">Registrati</button>
+  </form>
+
 </body>
+
 </html>
