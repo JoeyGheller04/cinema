@@ -17,7 +17,7 @@ $stmt->execute();
 
 $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if($record == false){
+if($record === false){
 
     $query = 'INSERT INTO cinema.users (nome, cognome, email, password)
     VALUES (
@@ -28,13 +28,15 @@ if($record == false){
         )';
     $stmt = $conn->prepare($query);
 
-    $stmt->bindParam('nome', $nome);
-    $stmt->bindParam('cognome', $cognome );
-    $stmt->bindParam('email', $email );
-    $stmt->bindParam('password', $password );
+    $stmt->bindParam('nome', $nome, PDO::PARAM_STR);
+    $stmt->bindParam('cognome', $cognome, PDO::PARAM_STR);
+    $stmt->bindParam('email', $email, PDO::PARAM_STR);
+    $stmt->bindParam('password', $password, PDO::PARAM_STR);
 
+    $stmt = $conn->prepare($sql);
     $stmt->execute();
-     
+
+    $_SESSION["email"] = $record["email"];
     $_SESSION["logged"] = true;
     $responseData = [
         "success" => true,
@@ -49,4 +51,5 @@ else{
         "msg" => "utente già esistente"
     ];
 }
+header('Content-Type: application/json');
 echo json_encode($responseData);

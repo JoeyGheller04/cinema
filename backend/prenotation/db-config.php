@@ -1,8 +1,5 @@
 <?php
 /*
-database name: cinema
-table name: users
-
 CREATE DATABASE IF NOT EXISTS `cinema`;
 CREATE TABLE IF NOT EXISTS `cinema`.`film` ( 
     `id` INT NOT NULL AUTO_INCREMENT , 
@@ -16,9 +13,10 @@ CREATE TABLE IF NOT EXISTS `cinema`.`film` (
 CREATE TABLE IF NOT EXISTS `cinema`.`prenotations` ( 
     `id` INT NOT NULL AUTO_INCREMENT , 
     `titolo` VARCHAR(30) NOT NULL ,  
-    `film_id` INT NOT NULL,
     `email` VARCHAR(40) NOT NULL, 
-    `data` VARCHAR(25) NOT NULL ,  
+    `data` VARCHAR(25) NOT NULL ,
+    `ora` VARCHAR(25) NOT NULL ,
+    `posto` VARCHAR(3) NOT NULL ,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 

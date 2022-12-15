@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- <link href="../dist/output.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script> -->
+  <link href="../dist/output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="../js/script.js"></script>
 
   <title>Cinema</title>
@@ -14,15 +14,44 @@
 
 <body>
   <form action="" method="post" id="form_registration">
-
-    <input type="text" id="nome" name="nome">
-    <input type="text" id="cognome" name="cognome">
-    <input type="text" id="email" name="email">
-    <input type="text" id="password" name="password">
-
-    <button type="submit" id="registration-btn" value="registration" name="btn" onclick="registration()">Registrati</button>
+    <div class="min-h-screen bg-gray-100 flex items-center">
+      <div class="container mx-auto max-w-md shadow-md hover:shadow-lg transition duration-300">
+        <div class="py-12 p-10 bg-white rounded-xl">
+          <!--Nome-->
+          <div class="mb-6">
+            <label class="mr-4 text-gray-700 font-bold inline-block mb-2">Nome</label>
+            <input type="text" id="nome" name="nome"
+              class="border bg-gray-100 py-2 px-4 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+              placeholder="password" />
+          </div>
+          <!--Cognome-->
+          <div class="mb-6">
+            <label class="mr-4 text-gray-700 font-bold inline-block mb-2">Cognome</label>
+            <input type="text" id="cognome" name="cognome"
+              class="border bg-gray-100 py-2 px-4 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+              placeholder="password" />
+          </div>
+          <!--Email-->
+          <div class="mb-6">
+            <label class="mr-4 text-gray-700 font-bold inline-block mb-2">Email</label>
+            <input id="email" name="email" type="text"
+              class="border bg-gray-100 py-2 px-4 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+              placeholder="email" />
+          </div>
+          <!--Pwd-->
+          <div class="mb-6">
+            <label class="mr-4 text-gray-700 font-bold inline-block mb-2">Password</label>
+            <input id="password" name="password" type="text"
+              class="border bg-gray-100 py-2 px-4 w-96 outline-none focus:ring-2 focus:ring-indigo-400 rounded"
+              placeholder="password" />
+          </div>
+          <!--Btn-->
+          <button type="submit" id="registration-btn" value="registration" name="btn" onclick="registration()"
+            class="w-full mt-6 text-indigo-50 font-bold bg-indigo-600 py-3 rounded-md hover:bg-indigo-500 transition duration-300">REGISTRATI</button>
+        </div>
+      </div>
+    </div>
   </form>
-
 </body>
 
 </html>

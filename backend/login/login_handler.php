@@ -17,8 +17,9 @@ $stmt->execute();
 $record = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if($record != false){
-    if($record["email"] == $_POST["email"] && $record["password"]  == $_POST["password"]){
+    if($record["email"] === $_POST["email"] && $record["password"]  === $_POST["password"]){
 
+        $_SESSION["email"] = $record["email"];
         $_SESSION["logged"] = true;
         $responseData = [
             "success" => true,
@@ -34,4 +35,5 @@ else{
         "msg" => "login unsuccesful"
     ];
 }
+header('Content-Type: application/json');
 echo json_encode($responseData);

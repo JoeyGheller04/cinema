@@ -2,44 +2,38 @@
 session_start();
 
 require_once('db-config.php');
-
 $conn = connectToDB();
 
-$nome = $_SESSION["nome"];
-$cognome = $_SESSION["cognome"];
-$email = $_SESSION["email"];
-$password = $_SESSION["password"];
+if (isset($_SESSION["email"])) {
+    $email = $_SESSION["email"];
+} else {
+    $email = $_POST["email"];
+}
+$titolo = $_POST["film"];
+$data = $_POST["data"];
+$ora = $_POST["ora"];
+$posto = $_POST["posto"];
 
-$sql = "select * from users where email = '$email'";
+$query = 'INSERT INTO cinema.prenotations (titolo, email, data, ora, ' . $posto . ')
+    VALUES (
+            :titolo,
+            :email,
+            :data,
+            :ora,
+            :posto
+        )';
+$stmt = $conn->prepare($query);
 
-$stmt = $conn->prepare($sql);
+$stmt->bindParam('titolo', $titolo, PDO::PARAM_STR);
+$stmt->bindParam('email', $email, PDO::PARAM_STR);
+$stmt->bindParam('data', $data, PDO::PARAM_STR);
+$stmt->bindParam('ora', $ora, PDO::PARAM_STR);
+$stmt->bindParam($posto, true, PDO::PARAM_BOOL);
+
 $stmt->execute();
 
-$record = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if($record == false){
-
-    $query = 'INSERT INTO cinema.users (nome, cognome, email, password)
-    VALUES (
-            :nome,
-            :cognome,            
-            :email,
-            :password
-        )';
-    $stmt = $conn->prepare($query);
-
-    $stmt->bindParam('nome', $nome);
-    $stmt->bindParam('cognome', $cognome );
-    $stmt->bindParam('email', $email );
-    $stmt->bindParam('password', $password );
-
-    $stmt->execute();
-    header('location: ..\second.php');
-}
-else{
-    session_unset();
-    $_SESSION["logged"] = false;
-    $_SESSION["res"] = "utente già esistente";
-
-    header('location: ..\index.php');
-}
+$responseData = [
+    "success" => true,
+    "msg" => "posto prenotato"
+];
+echo json_encode($responseData);
